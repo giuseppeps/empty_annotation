@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:empty_annotation/empty_annotation.dart';
 
 /// Make sure the `part` is specified before running the builder.

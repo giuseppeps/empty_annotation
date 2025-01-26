@@ -1,6 +1,6 @@
 [![Pub Package](https://img.shields.io/pub/v/v-empty_generator.svg)](https://pub.dev/packages/empty_generator)
 
-This package provides a builder for the [Dart Build System](https://pub.dev/packages/build) that generates `Empty` constructors for classes annotated with [empty_annotation](https://pub.dev/packages/empty_annotation). For a detailed explanation of how this package works, check out [my blog article](https://yourblog.com/article-about-empty-generator).
+This package provides a builder for the [Dart Build System](https://pub.dev/packages/build) that generates `Empty` constructors for classes annotated with [empty_annotation](https://pub.dev/packages/empty_annotation). 
 
 This library allows you to generate empty constructors for classes, like so:
 

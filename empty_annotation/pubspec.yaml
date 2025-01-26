@@ -3,6 +3,10 @@ description: An annotation package for generating empty classes.
 
 version: 0.0.1+1
 
+homepage: https://github.com/giuseppeps/empty_annotation/tree/main/empty_annotation
+repository: https://github.com/giuseppeps/empty_annotation
+issue_tracker: https://github.com/giuseppeps/empty_annotation/issues
+
 environment:
   sdk: ^3.5.3
   flutter: ">=1.17.0"
