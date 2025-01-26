@@ -1,0 +1,17 @@
+name: empty_annotation
+description: An annotation package for generating empty classes.
+
+version: 0.0.1+1
+
+environment:
+  sdk: ^3.5.3
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
