@@ -1,0 +1,14 @@
+targets:
+  $default:
+    builders:
+      empty_generator:
+        enabled: true
+
+builders:
+  empty_generator:
+    import: "package:empty_generator/empty_generator.dart"
+    builder_factories: ["emptyGenerator"]
+    build_extensions: { ".dart": [".empty.g.part"] }
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]

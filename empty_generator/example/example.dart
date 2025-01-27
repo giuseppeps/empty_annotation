@@ -2,8 +2,8 @@
 
 import 'package:empty_annotation/empty_annotation.dart';
 
-/// Make sure the `part` is specified before running the builder.
-/// part 'example.g.dart';
+// Make sure the `part` is specified before running the builder.
+// part 'example.g.dart';
 
 @Empty()
 class ExampleClass {
