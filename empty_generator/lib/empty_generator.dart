@@ -40,12 +40,13 @@ class EmptyGenerator extends GeneratorForAnnotation<Empty> {
     final fields = <FieldElement>[];
 
     ClassElement? currentClass = element;
-    while (currentClass != null) {
+    while (currentClass != null && currentClass.name != 'Object') {
       fields.addAll(
         currentClass.fields.where((field) =>
             !field.isStatic && // Ignore static fields
             !field.isSynthetic && // Ignore params as hashCode and runtimeType
-            field.isPublic),
+            field.isPublic &&
+            !field.isLate),
       );
 
       currentClass = currentClass.supertype?.element is ClassElement
@@ -70,6 +71,7 @@ class EmptyGenerator extends GeneratorForAnnotation<Empty> {
     }
 
     if (typeName == 'int') return '0';
+    if (typeName == 'num') return '0';
     if (typeName == 'double') return '0.0';
     if (typeName == 'String') return "''";
     if (typeName == 'bool') return 'false';
@@ -77,6 +79,24 @@ class EmptyGenerator extends GeneratorForAnnotation<Empty> {
     if (typeName.startsWith('List')) return 'const []';
     if (typeName.startsWith('Map')) return 'const {}';
     if (typeName == 'Type') return 'null';
+    if (typeName == 'dynamic') return 'null';
+    if (typeName == 'void') return 'null';
+    if (typeName == 'Null') return 'null';
+    if (typeName == 'Object') return 'Object()';
+    if (typeName == 'Function') return '() {}';
+    if (typeName == 'Iterable') return 'const []';
+    if (typeName == 'Stream') return 'Stream.empty()';
+    if (typeName == 'Future') return 'Future.value()';
+    if (typeName == 'FutureOr') return 'Future.value()';
+    if (typeName == 'Never') return 'throw Exception()';
+    if (typeName == 'Symbol') return 'Symbol(' ')';
+    if (typeName == 'Uri') return 'Uri()';
+    if (typeName == 'RegExp') return 'RegExp(' ')';
+    if (typeName == 'StackTrace') return 'StackTrace.current';
+    if (typeName == 'RuneIterator') return 'RuneIterator(' ')';
+    if (typeName == 'Runes') return 'Runes(' ')';
+    if (typeName == 'Pattern') return "''";
+    if (typeName == 'Match') return 'null';
 
     return '${typeName}Empty()';
   }
