@@ -1,5 +1,4 @@
 library empty_annotation;
 
-class Empty {
-  const Empty();
-}
+export 'src/default_annotation.dart';
+export 'src/empty_annotation.dart';
