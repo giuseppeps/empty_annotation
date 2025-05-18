@@ -1,4 +1,4 @@
-library empty_generator;
+library;
 
 import 'dart:async';
 
@@ -23,12 +23,13 @@ class EmptyGenerator extends GeneratorForAnnotation<Empty> {
     }
 
     final className = element.name;
+
     final fields = _collectFields(element).map((field) {
-      return '${field.name}: ${_defaultValueForType(field.type)}';
+      return '${field.name}: ${_defaultValueForField(field)}';
     }).join(',\n      ');
 
     return '''
-      class ${className}Empty extends $className{
+      class ${className}Empty extends $className {
         ${className}Empty() : super(
           $fields
         );
@@ -57,12 +58,37 @@ class EmptyGenerator extends GeneratorForAnnotation<Empty> {
     return fields;
   }
 
+  ElementAnnotation? _getDefaultAnnotation(FieldElement field) {
+    for (final annotation in field.metadata) {
+      final obj = annotation.computeConstantValue();
+      if (obj == null) continue;
+      if (obj.type?.getDisplayString(withNullability: false) == 'Default') {
+        return annotation;
+      }
+    }
+    return null;
+  }
+
+  String _defaultValueForField(FieldElement field) {
+    final annotation = _getDefaultAnnotation(field);
+    if (annotation != null) {
+      final source = annotation.toSource();
+      final startIndex = source.indexOf('(');
+      final endIndex = source.lastIndexOf(')');
+      if (startIndex >= 0 && endIndex > startIndex) {
+        final valueCode = source.substring(startIndex + 1, endIndex);
+        return valueCode.trim();
+      }
+    }
+    return _defaultValueForType(field.type);
+  }
+
   bool _isEnum(Element element) {
     return element.toString().startsWith('enum');
   }
 
   String _defaultValueForType(DartType type) {
-    final typeName = type.getDisplayString();
+    final typeName = type.getDisplayString(withNullability: false);
 
     if (typeName.endsWith('?')) return 'null';
 

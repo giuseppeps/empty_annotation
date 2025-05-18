@@ -72,6 +72,24 @@ The package generates an empty constructor for your class:
 final emptyInstance = YourClassEmpty(); // Creates an empty instance
 ```
 
+#### Use @Default() to override default values
+```dart
+@Empty()
+class MyClass {
+  @Default('John')
+  final String name;
+
+  @Default(18)
+  final int age;
+
+  @Default(MyEnum.optionA)
+  final MyEnum type;
+
+  MyClass({required this.name, required this.age, required this.type});
+}
+```
+Note: Enums, primitive types, and even constant values can be set with @Default() and will be respected by the generator.
+
 #### `build.yaml` configuration
 
 You can globally configure the library's behavior in your project by adding a `build.yaml` file.

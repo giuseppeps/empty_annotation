@@ -1,3 +1,7 @@
+## 0.0.3
+
+- Added support for user-defined default values via the `@Default()` annotation from `empty_annotation`.
+
 ## 0.0.2
 
 - Removed Flutter SDK dependency to make the package usable in pure Dart projects.

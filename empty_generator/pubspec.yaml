@@ -1,7 +1,7 @@
 name: empty_generator
 description: "Code generator for use with the Empty Annotation package."
 
-version: 0.0.2
+version: 0.0.3
 
 homepage: https://github.com/giuseppeps/empty_annotation/tree/main/empty_generator
 repository: https://github.com/giuseppeps/empty_annotation
@@ -12,7 +12,7 @@ environment:
 
 dependencies:
   analyzer: ^7.4.4
-  empty_annotation: ^0.0.2
+  empty_annotation: ^0.0.3
   build: ^2.4.1
   source_gen: ^2.0.0
 
